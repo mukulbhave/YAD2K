@@ -189,7 +189,10 @@ def _main(args):
     add_to_dataset(voc_path, '2012', val_ids, val_images, val_boxes)
     print('Processing Pascal VOC 2007 test set.')
     add_to_dataset(voc_path, '2007', test_ids, test_images, test_boxes)
-
+    
+    train_group.attrs['dataset_size'] =  total_train_ids
+    val_group.attrs['dataset_size'] =  len(val_ids)
+    test_group.attrs['dataset_size'] =  len(test_ids)
     print('Closing HDF5 file.')
     voc_h5file.close()
     print('Done.')
